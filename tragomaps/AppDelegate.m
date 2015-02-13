@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Pushwoosh/PushNotificationManager.h>
+#import "GAI.h"
 
 #define LOCATIONS_FILE @"PWLocationTracking"
 #define LOCATIONS_FILE_TYPE @"log"
@@ -45,8 +46,18 @@
         
         [pushManager startLocationTracking];
     }
-    
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    //IMPLEMENTANDO ANALYTICS
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-59480316-2"];
     return YES;
 }
 
