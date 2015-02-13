@@ -7,6 +7,10 @@
 //
 
 #import "Home.h"
+#import "cellPlaces.h"
+#import "json/SBJson.h"
+
+NSDictionary    *jsonResponse;
 
 @interface Home ()
 
