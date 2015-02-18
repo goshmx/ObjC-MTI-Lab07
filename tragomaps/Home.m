@@ -12,6 +12,12 @@
 
 NSDictionary    *jsonResponse;
 
+NSMutableArray *namePlace;
+NSMutableArray *latPlace;
+NSMutableArray *lngPlace;
+NSMutableArray *urlPlace;
+
+
 @interface Home ()
 
 @end
@@ -22,6 +28,10 @@ NSDictionary    *jsonResponse;
     [self cfgiAdBanner];
     [self screenName];
     [super viewDidLoad];
+    
+    [self postService];
+    [self.tablePlaces reloadInputViews];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -111,4 +121,102 @@ NSDictionary    *jsonResponse;
     // [audio resume];
 }
 
+/**********************************************************************************************
+ Table Functions
+ **********************************************************************************************/
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+//-------------------------------------------------------------------------------
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{    
+    return namePlace.count;
+}
+//-------------------------------------------------------------------------------
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 64;
+}
+//-------------------------------------------------------------------------------
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"cellPlaces");
+    static NSString *CellIdentifier = @"cellPlaces";
+    
+    cellPlaces *cell = (cellPlaces *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[cellPlaces alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.nombreLugar.text = namePlace[indexPath.row];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlPlace[indexPath.row]]];    
+    cell.foto.image = [UIImage imageWithData:imageData];
+    cell.foto.contentMode  = UIViewContentModeScaleAspectFit;
+
+    
+    
+    return cell;
+}
+
+//-------------------------------------------------------------------------------
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    }
+
+
+/*******************************************************************************
+ Web Service
+ *******************************************************************************/
+//-------------------------------------------------------------------------------
+- (void) postService
+{
+    NSLog(@"postService");
+    NSOperationQueue *queue = [NSOperationQueue new];
+    NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadService) object:nil];
+    [queue addOperation:operation];
+}
+//-------------------------------------------------------------------------------
+- (void) loadService
+{
+    @try
+    {
+        
+        NSURL *url = [NSURL URLWithString:@"http://goshmx.com/apps/mobileserv/api/mti/lista/user/gosh"];
+        NSLog(@"URL postService = %@", url);
+        
+        NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url];
+        [request setHTTPMethod:@"GET"];
+        [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"content-type"];
+        NSError *error;
+        NSURLResponse *response;
+        NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        jsonResponse = [NSJSONSerialization JSONObjectWithData:urlData options:kNilOptions error:&error];
+        //-------------------------------------------------------------------------------
+    }
+    @catch (NSException * e)
+    {
+        NSLog(@"JSON Exception");
+    }
+    //-------------------------------------------------------------------------------
+    NSLog(@"jsonResponse %@", jsonResponse);
+    namePlace = [jsonResponse valueForKey:@"name"];
+    latPlace = [jsonResponse valueForKey:@"lat"];
+    lngPlace = [jsonResponse valueForKey:@"lng"];
+    urlPlace = [jsonResponse valueForKey:@"url"];
+    
+    NSLog(@"nombres %@", namePlace);
+    [self.tablePlaces reloadData];
+    [self.tablePlaces performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
+    
+    
+}
+
+
+
+- (IBAction)accionMapa:(id)sender {
+    [self postService];
+}
 @end

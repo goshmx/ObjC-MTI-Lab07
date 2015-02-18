@@ -10,10 +10,15 @@
 #import <iAd/iAd.h>
 #import "GAITrackedViewController.h"
 
+
+
 @interface Home : GAITrackedViewController<UIApplicationDelegate, ADBannerViewDelegate>
 {
     ADBannerView *adView;
     BOOL bannerIsVisible;
+    
 }
+@property (strong, nonatomic) IBOutlet UITableView *tablePlaces;
+- (IBAction)accionMapa:(id)sender;
 @end
 
