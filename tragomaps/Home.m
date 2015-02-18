@@ -217,6 +217,6 @@ NSMutableArray *urlPlace;
 
 
 - (IBAction)accionMapa:(id)sender {
-    [self postService];
+    [self performSegueWithIdentifier:@"sagaHomeMapa" sender:self];
 }
 @end
