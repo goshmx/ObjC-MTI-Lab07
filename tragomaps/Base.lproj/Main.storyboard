@@ -121,11 +121,16 @@
                                     <action selector="accionListado:" destination="9ff-3G-Dfg" eventType="touchUpInside" id="GLi-Yl-uxa"/>
                                 </connections>
                             </button>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYZ-He-I8n">
+                                <rect key="frame" x="0.0" y="61" width="320" height="405"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="vistaMapa" destination="VYZ-He-I8n" id="2tZ-Eb-4fe"/>
                         <segue destination="vXZ-lx-hvc" kind="modal" identifier="sagaMapaHome" id="OOz-uQ-qCg"/>
                     </connections>
                 </viewController>

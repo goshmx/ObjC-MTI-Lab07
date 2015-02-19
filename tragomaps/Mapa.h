@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <CoreLocation/CoreLocation.h>
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface Mapa : UIViewController
+@interface Mapa : UIViewController<CLLocationManagerDelegate, GMSMapViewDelegate>
+
+@property (strong, nonatomic) CLLocationManager     *locationManager;
+@property (strong, nonatomic) CLLocation            *location;
+@property (strong, nonatomic) IBOutlet UIView *vistaMapa;
 
 - (IBAction)accionListado:(id)sender;
 @end

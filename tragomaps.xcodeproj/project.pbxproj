@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F4A355D1A95EA26002A1494 /* usuario.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4A355C1A95EA26002A1494 /* usuario.png */; };
+		8F4A355F1A95F0ED002A1494 /* 1423446952_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4A355E1A95F0ED002A1494 /* 1423446952_beer.png */; };
 		8F5164551A8E044200346AF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5164541A8E044200346AF1 /* main.m */; };
 		8F5164581A8E044200346AF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5164571A8E044200346AF1 /* AppDelegate.m */; };
 		8F51645B1A8E044200346AF1 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F51645A1A8E044200346AF1 /* Home.m */; };
@@ -82,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F4A355C1A95EA26002A1494 /* usuario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usuario.png; sourceTree = "<group>"; };
+		8F4A355E1A95F0ED002A1494 /* 1423446952_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1423446952_beer.png; sourceTree = "<group>"; };
 		8F51644F1A8E044200346AF1 /* tragomaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tragomaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F5164531A8E044200346AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F5164541A8E044200346AF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -209,6 +213,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F4A35591A95EA02002A1494 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8F4A355E1A95F0ED002A1494 /* 1423446952_beer.png */,
+				8F4A355C1A95EA26002A1494 /* usuario.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		8F5164461A8E044100346AF1 = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +258,7 @@
 		8F5164511A8E044200346AF1 /* tragomaps */ = {
 			isa = PBXGroup;
 			children = (
+				8F4A35591A95EA02002A1494 /* images */,
 				8F5164EC1A8EB39800346AF1 /* customized */,
 				8F5164781A8E8FC000346AF1 /* frameworks */,
 				8F5164561A8E044200346AF1 /* AppDelegate.h */,
@@ -540,11 +554,13 @@
 				8F5164AB1A8E8FEF00346AF1 /* index.html in Resources */,
 				8F51649D1A8E8FEF00346AF1 /* PWNetworkEngine.html in Resources */,
 				8F5164A91A8E8FEF00346AF1 /* library_background.png in Resources */,
+				8F4A355F1A95F0ED002A1494 /* 1423446952_beer.png in Resources */,
 				8F5164A11A8E8FEF00346AF1 /* PWBeaconAction.html in Resources */,
 				8F51645E1A8E044200346AF1 /* Main.storyboard in Resources */,
 				8F5164A41A8E8FEF00346AF1 /* stylesPrint.css in Resources */,
 				8F5164AC1A8E8FEF00346AF1 /* PushNotificationDelegate.html in Resources */,
 				8F5164A81A8E8FEF00346AF1 /* disclosure_open.png in Resources */,
+				8F4A355D1A95EA26002A1494 /* usuario.png in Resources */,
 				8F5164A21A8E8FEF00346AF1 /* PWSupportedOrientations.html in Resources */,
 				8F5164A31A8E8FEF00346AF1 /* styles.css in Resources */,
 				8F5164A71A8E8FEF00346AF1 /* disclosure.png in Resources */,
