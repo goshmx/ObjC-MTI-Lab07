@@ -11,5 +11,6 @@
 @interface cellPlaces : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *foto;
 @property (strong, nonatomic) IBOutlet UILabel *nombreLugar;
+@property (strong, nonatomic) IBOutlet UILabel *descLugar;
 
 @end

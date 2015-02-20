@@ -10,6 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <iAd/iAd.h>
 
 @interface Mapa : UIViewController<CLLocationManagerDelegate, GMSMapViewDelegate>
 

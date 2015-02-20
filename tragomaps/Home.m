@@ -16,7 +16,7 @@ NSMutableArray *namePlace;
 NSMutableArray *latPlace;
 NSMutableArray *lngPlace;
 NSMutableArray *urlPlace;
-
+NSMutableArray *descripcionPlace;
 
 @interface Home ()
 
@@ -154,6 +154,9 @@ NSMutableArray *urlPlace;
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlPlace[indexPath.row]]];    
     cell.foto.image = [UIImage imageWithData:imageData];
     cell.foto.contentMode  = UIViewContentModeScaleAspectFit;
+    cell.descLugar.text = descripcionPlace[indexPath.row];
+    
+    
 
     
     
@@ -163,7 +166,21 @@ NSMutableArray *urlPlace;
 //-------------------------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    }
+    NSString *latitud = [latPlace objectAtIndex:indexPath.row];
+    NSString *longitud = [lngPlace objectAtIndex:indexPath.row];
+    NSString *nombre = [namePlace objectAtIndex:indexPath.row];
+    
+     NSString *direccion = [NSString stringWithFormat:@"comgooglemaps://?&daddr=%@,%@&zoom=14&directionsmode=driving", latitud, longitud];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:
+         [NSURL URLWithString:@"comgooglemaps://"]]) {
+        [[UIApplication sharedApplication] openURL:
+         [NSURL URLWithString:direccion]];
+    } else {
+        NSLog(@"Can't use comgooglemaps://");
+    }    
+    
+}
 
 
 /*******************************************************************************
@@ -205,6 +222,9 @@ NSMutableArray *urlPlace;
     latPlace = [jsonResponse valueForKey:@"lat"];
     lngPlace = [jsonResponse valueForKey:@"lng"];
     urlPlace = [jsonResponse valueForKey:@"url"];
+    descripcionPlace = [jsonResponse valueForKey:@"descripcion"];
+
+    
     
     NSLog(@"nombres %@", namePlace);
     [self.tablePlaces reloadData];
@@ -218,5 +238,9 @@ NSMutableArray *urlPlace;
 
 - (IBAction)accionMapa:(id)sender {
     [self performSegueWithIdentifier:@"sagaHomeMapa" sender:self];
+}
+- (IBAction)actualizar:(id)sender {
+    [self postService];
+    [self.tablePlaces reloadInputViews];
 }
 @end

@@ -16,6 +16,7 @@ NSMutableArray *latPlace;
 NSMutableArray *lngPlace;
 NSMutableArray *urlPlace;
 
+
 NSString    *strUserLocation;
 float       mlatitude;
 float       mlongitude;
@@ -131,7 +132,7 @@ GMSMarker *usuario;
     float markerLat = posicion.latitude;
     float markerLng = posicion.longitude;
     NSLog(@"%.8f",markerLat);
-    NSString *direccion = [NSString stringWithFormat:@"comgooglemaps://?saddr=%.8f,%.8f&daddr=%.8f,%.8f&directionsmode=transit", markerLat, markerLng,mlatitude,mlongitude];
+    NSString *direccion = [NSString stringWithFormat:@"comgooglemaps://?saddr=%.8f,%.8f&daddr=%.8f,%.8f&directionsmode=driving", markerLat, markerLng,mlatitude,mlongitude];
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:direccion]];
         } else {

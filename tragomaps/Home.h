@@ -18,6 +18,7 @@
     BOOL bannerIsVisible;
     
 }
+- (IBAction)actualizar:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *tablePlaces;
 - (IBAction)accionMapa:(id)sender;
 @end
